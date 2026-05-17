@@ -41,7 +41,7 @@ export class LangflowStack extends cdk.Stack {
       generateSecretString: {
         secretStringTemplate: JSON.stringify({ username: "langflow" }),
         generateStringKey: "password",
-        excludeCharacters: '"@/\\',
+        excludeCharacters: '"@/\\\'${}[]&;:?#%+,=',
       },
     });
 
