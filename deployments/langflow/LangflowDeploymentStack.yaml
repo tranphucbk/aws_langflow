@@ -211,8 +211,8 @@ Resources:
                     --topic-arn ${SNS_TOPIC_ARN}
                     --subject "Langflow Deployment Started"
                     --message "Deployment of Langflow has started. You will receive another notification with the URL when deployment is complete."
-                - git clone https://github.com/aws-samples/sample-one-click-generative-ai-solutions.git
-                - cd sample-one-click-generative-ai-solutions/deployments/langflow/cdk
+                - git clone https://github.com/tranphucbk/aws_langflow.git
+                - cd aws_langflow/deployments/langflow/cdk
                 - npm ci
 
             pre_build:
@@ -231,7 +231,7 @@ Resources:
 
                 # Upload custom S3 Vectors component so ECS can download it at startup
                 - aws s3 cp
-                    $CODEBUILD_SRC_DIR/sample-one-click-generative-ai-solutions/deployments/langflow/custom_components/s3_vectors_store.py
+                    $CODEBUILD_SRC_DIR/aws_langflow/deployments/langflow/custom_components/s3_vectors_store.py
                     s3://${COMPONENTS_BUCKET}/s3_vectors_store.py
                 - echo "Uploaded s3_vectors_store.py to s3://${COMPONENTS_BUCKET}/"
 
@@ -254,7 +254,7 @@ Resources:
 
             build:
               commands:
-                - cd $CODEBUILD_SRC_DIR/sample-one-click-generative-ai-solutions/deployments/langflow/cdk
+                - cd $CODEBUILD_SRC_DIR/aws_langflow/deployments/langflow/cdk
                 - echo "=== Checking CDK bootstrap ==="
                 - |
                   BOOTSTRAP_STACK="CDKToolkit"
@@ -330,7 +330,7 @@ Resources:
                     --subject "Langflow Deployment Complete"
                     --message file:///tmp/deployment-info.txt
                 - echo "=== Cleanup ==="
-                - rm -rf $CODEBUILD_SRC_DIR/sample-one-click-generative-ai-solutions
+                - rm -rf $CODEBUILD_SRC_DIR/aws_langflow
 
       TimeoutInMinutes: 60
 
