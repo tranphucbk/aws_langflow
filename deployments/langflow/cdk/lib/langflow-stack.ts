@@ -205,7 +205,7 @@ def handler(event, context):
 
     // ── 9. ECS Security Groups ───────────────────────────────────────────────
     const ecsSg = new ec2.SecurityGroup(this, "EcsSg", { vpc, allowAllOutbound: true });
-    dbSg.addIngressRule(ecsSg, ec2.Port.tcp(5432), "Langflow ECS → RDS");
+    dbSg.addIngressRule(ecsSg, ec2.Port.tcp(5432), "Langflow ECS to RDS");
 
     // ── 10. Database URL (assembled from secret) ─────────────────────────────
     const dbUrl = `postgresql://${dbSecret.secretValueFromJson("username").unsafeUnwrap()}:${dbSecret.secretValueFromJson("password").unsafeUnwrap()}@${db.dbInstanceEndpointAddress}:5432/langflow`;
