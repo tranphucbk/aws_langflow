@@ -249,6 +249,7 @@ def handler(event, context):
         },
         publicLoadBalancer: true,
         listenerPort: 80,
+        healthCheckGracePeriod: cdk.Duration.minutes(5),
       }
     );
 
@@ -259,7 +260,7 @@ def handler(event, context):
       interval: cdk.Duration.seconds(30),
       timeout: cdk.Duration.seconds(10),
       healthyThresholdCount: 2,
-      unhealthyThresholdCount: 3,
+      unhealthyThresholdCount: 5,
     });
 
     // ── 12. WAF — IP restriction ─────────────────────────────────────────────

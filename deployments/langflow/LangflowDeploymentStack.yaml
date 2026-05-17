@@ -332,7 +332,7 @@ Resources:
                 - echo "=== Cleanup ==="
                 - rm -rf $CODEBUILD_SRC_DIR/aws_langflow
 
-      TimeoutInMinutes: 60
+      TimeoutInMinutes: 120
 
   # ── Lambda Custom Resource — triggers CodeBuild automatically ────────────────
   TriggerFunction:
