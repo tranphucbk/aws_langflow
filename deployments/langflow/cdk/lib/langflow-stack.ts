@@ -125,6 +125,14 @@ def send_response(event, context, status, data={}):
 def handler(event, context):
     try:
         if event['RequestType'] == 'Delete':
+            try:
+                client = boto3.client('s3vectors')
+                client.delete_index(
+                    vectorBucketName=event['ResourceProperties']['BucketName'],
+                    indexName='langflow-index',
+                )
+            except Exception:
+                pass
             send_response(event, context, 'SUCCESS')
             return
         props = event['ResourceProperties']
@@ -207,9 +215,6 @@ def handler(event, context):
     const ecsSg = new ec2.SecurityGroup(this, "EcsSg", { vpc, allowAllOutbound: true });
     dbSg.addIngressRule(ecsSg, ec2.Port.tcp(5432), "Langflow ECS to RDS");
 
-    // ── 10. Database URL (assembled from secret) ─────────────────────────────
-    const dbUrl = `postgresql://${dbSecret.secretValueFromJson("username").unsafeUnwrap()}:${dbSecret.secretValueFromJson("password").unsafeUnwrap()}@${db.dbInstanceEndpointAddress}:5432/langflow`;
-
     // ── 11. Fargate Service ──────────────────────────────────────────────────
     const fargateService = new ecsPatterns.ApplicationLoadBalancedFargateService(
       this,
@@ -230,12 +235,17 @@ def handler(event, context):
             streamPrefix: "langflow",
             logRetention: logs.RetentionDays.ONE_WEEK,
           }),
+          command: [
+            "/bin/sh", "-c",
+            'export LANGFLOW_DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/langflow" && exec langflow run --host 0.0.0.0 --port 7860',
+          ],
           environment: {
             LANGFLOW_AUTO_LOGIN: "false",
             LANGFLOW_SUPERUSER: props.superuserEmail,
             LANGFLOW_WORKERS: "2",
             LANGFLOW_LOG_LEVEL: "info",
             LANGFLOW_COMPONENTS_PATH: "/app/custom_components",
+            DB_HOST: db.dbInstanceEndpointAddress,
             // S3 Vectors config
             S3_VECTORS_BUCKET_NAME: vectorsBucketName,
             S3_VECTORS_INDEX_NAME: "langflow-index",
@@ -244,7 +254,8 @@ def handler(event, context):
             CUSTOM_COMPONENTS_S3_BUCKET: componentsBucket.bucketName,
           },
           secrets: {
-            LANGFLOW_DATABASE_URL: ecs.Secret.fromSecretsManager(dbSecret, "password"),
+            DB_USER:     ecs.Secret.fromSecretsManager(dbSecret, "username"),
+            DB_PASSWORD: ecs.Secret.fromSecretsManager(dbSecret, "password"),
           },
         },
         publicLoadBalancer: true,
