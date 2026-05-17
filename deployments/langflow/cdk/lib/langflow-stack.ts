@@ -235,8 +235,8 @@ def handler(event, context):
             streamPrefix: "langflow",
             logRetention: logs.RetentionDays.ONE_WEEK,
           }),
+          entryPoint: ["/bin/sh", "-c"],
           command: [
-            "/bin/sh", "-c",
             'export LANGFLOW_DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/langflow" && exec langflow run --host 0.0.0.0 --port 7860',
           ],
           environment: {
