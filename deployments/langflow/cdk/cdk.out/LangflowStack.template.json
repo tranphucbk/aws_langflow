@@ -1,0 +1,2073 @@
+{
+ "Resources": {
+  "LangflowVpc09E9E455": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/Resource"
+   }
+  },
+  "LangflowVpcpublicSubnet1Subnet1D3DB5DC": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/publicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet1/Subnet"
+   }
+  },
+  "LangflowVpcpublicSubnet1RouteTable5307F07B": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/publicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet1/RouteTable"
+   }
+  },
+  "LangflowVpcpublicSubnet1RouteTableAssociationE649B1E7": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LangflowVpcpublicSubnet1RouteTable5307F07B"
+    },
+    "SubnetId": {
+     "Ref": "LangflowVpcpublicSubnet1Subnet1D3DB5DC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet1/RouteTableAssociation"
+   }
+  },
+  "LangflowVpcpublicSubnet1DefaultRoute0DC2A049": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "LangflowVpcIGW8B4922CB"
+    },
+    "RouteTableId": {
+     "Ref": "LangflowVpcpublicSubnet1RouteTable5307F07B"
+    }
+   },
+   "DependsOn": [
+    "LangflowVpcVPCGW8E6CFCD5"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet1/DefaultRoute"
+   }
+  },
+  "LangflowVpcpublicSubnet1EIP6AC23034": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/publicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet1/EIP"
+   }
+  },
+  "LangflowVpcpublicSubnet1NATGatewayEA2DD6FD": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "LangflowVpcpublicSubnet1EIP6AC23034",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "LangflowVpcpublicSubnet1Subnet1D3DB5DC"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/publicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "LangflowVpcpublicSubnet1DefaultRoute0DC2A049",
+    "LangflowVpcpublicSubnet1RouteTableAssociationE649B1E7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet1/NATGateway"
+   }
+  },
+  "LangflowVpcpublicSubnet2Subnet36810BF2": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/publicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet2/Subnet"
+   }
+  },
+  "LangflowVpcpublicSubnet2RouteTable9ECA673E": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/publicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet2/RouteTable"
+   }
+  },
+  "LangflowVpcpublicSubnet2RouteTableAssociation7F1AFDC7": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LangflowVpcpublicSubnet2RouteTable9ECA673E"
+    },
+    "SubnetId": {
+     "Ref": "LangflowVpcpublicSubnet2Subnet36810BF2"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet2/RouteTableAssociation"
+   }
+  },
+  "LangflowVpcpublicSubnet2DefaultRoute2B5A138C": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "LangflowVpcIGW8B4922CB"
+    },
+    "RouteTableId": {
+     "Ref": "LangflowVpcpublicSubnet2RouteTable9ECA673E"
+    }
+   },
+   "DependsOn": [
+    "LangflowVpcVPCGW8E6CFCD5"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/publicSubnet2/DefaultRoute"
+   }
+  },
+  "LangflowVpcprivateSubnet1Subnet735032DA": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/privateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet1/Subnet"
+   }
+  },
+  "LangflowVpcprivateSubnet1RouteTableF34652EA": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/privateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet1/RouteTable"
+   }
+  },
+  "LangflowVpcprivateSubnet1RouteTableAssociation90E6DB9C": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LangflowVpcprivateSubnet1RouteTableF34652EA"
+    },
+    "SubnetId": {
+     "Ref": "LangflowVpcprivateSubnet1Subnet735032DA"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet1/RouteTableAssociation"
+   }
+  },
+  "LangflowVpcprivateSubnet1DefaultRouteD39AA85E": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "LangflowVpcpublicSubnet1NATGatewayEA2DD6FD"
+    },
+    "RouteTableId": {
+     "Ref": "LangflowVpcprivateSubnet1RouteTableF34652EA"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet1/DefaultRoute"
+   }
+  },
+  "LangflowVpcprivateSubnet2Subnet44AA2EDA": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/privateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet2/Subnet"
+   }
+  },
+  "LangflowVpcprivateSubnet2RouteTableA5FD2E59": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/privateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet2/RouteTable"
+   }
+  },
+  "LangflowVpcprivateSubnet2RouteTableAssociationB5584F5D": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LangflowVpcprivateSubnet2RouteTableA5FD2E59"
+    },
+    "SubnetId": {
+     "Ref": "LangflowVpcprivateSubnet2Subnet44AA2EDA"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet2/RouteTableAssociation"
+   }
+  },
+  "LangflowVpcprivateSubnet2DefaultRoute92E7E793": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "LangflowVpcpublicSubnet1NATGatewayEA2DD6FD"
+    },
+    "RouteTableId": {
+     "Ref": "LangflowVpcprivateSubnet2RouteTableA5FD2E59"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/privateSubnet2/DefaultRoute"
+   }
+  },
+  "LangflowVpcisolatedSubnet1SubnetACFEF664": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.4.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/isolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/isolatedSubnet1/Subnet"
+   }
+  },
+  "LangflowVpcisolatedSubnet1RouteTable7B6D605F": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/isolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/isolatedSubnet1/RouteTable"
+   }
+  },
+  "LangflowVpcisolatedSubnet1RouteTableAssociation293D238A": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LangflowVpcisolatedSubnet1RouteTable7B6D605F"
+    },
+    "SubnetId": {
+     "Ref": "LangflowVpcisolatedSubnet1SubnetACFEF664"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/isolatedSubnet1/RouteTableAssociation"
+   }
+  },
+  "LangflowVpcisolatedSubnet2Subnet8680E5DD": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.5.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/isolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/isolatedSubnet2/Subnet"
+   }
+  },
+  "LangflowVpcisolatedSubnet2RouteTableF7D276C2": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc/isolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/isolatedSubnet2/RouteTable"
+   }
+  },
+  "LangflowVpcisolatedSubnet2RouteTableAssociationEF69F2AC": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "LangflowVpcisolatedSubnet2RouteTableF7D276C2"
+    },
+    "SubnetId": {
+     "Ref": "LangflowVpcisolatedSubnet2Subnet8680E5DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/isolatedSubnet2/RouteTableAssociation"
+   }
+  },
+  "LangflowVpcIGW8B4922CB": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "LangflowStack/LangflowVpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/IGW"
+   }
+  },
+  "LangflowVpcVPCGW8E6CFCD5": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "LangflowVpcIGW8B4922CB"
+    },
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVpc/VPCGW"
+   }
+  },
+  "LangflowDbSecret126265CE": {
+   "Type": "AWS::SecretsManager::Secret",
+   "Properties": {
+    "GenerateSecretString": {
+     "ExcludeCharacters": "\"@/\\",
+     "GenerateStringKey": "password",
+     "SecretStringTemplate": "{\"username\":\"langflow\"}"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowDbSecret/Resource"
+   }
+  },
+  "LangflowDbSecretAttachment7D78035E": {
+   "Type": "AWS::SecretsManager::SecretTargetAttachment",
+   "Properties": {
+    "SecretId": {
+     "Ref": "LangflowDbSecret126265CE"
+    },
+    "TargetId": {
+     "Ref": "LangflowDb6B4BED68"
+    },
+    "TargetType": "AWS::RDS::DBInstance"
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowDbSecret/Attachment/Resource"
+   }
+  },
+  "DbSg495F8305": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "LangflowStack/DbSg",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/DbSg/Resource"
+   }
+  },
+  "DbSgfromLangflowStackEcsSgCD17E9485432E55B00D3": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "Langflow ECS → RDS",
+    "FromPort": 5432,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "DbSg495F8305",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "EcsSg17B4B0B3",
+      "GroupId"
+     ]
+    },
+    "ToPort": 5432
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/DbSg/from LangflowStackEcsSgCD17E948:5432"
+   }
+  },
+  "LangflowDbSubnetGroupF09FE836": {
+   "Type": "AWS::RDS::DBSubnetGroup",
+   "Properties": {
+    "DBSubnetGroupDescription": "Subnet group for LangflowDb database",
+    "SubnetIds": [
+     {
+      "Ref": "LangflowVpcisolatedSubnet1SubnetACFEF664"
+     },
+     {
+      "Ref": "LangflowVpcisolatedSubnet2Subnet8680E5DD"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowDb/SubnetGroup/Default"
+   }
+  },
+  "LangflowDb6B4BED68": {
+   "Type": "AWS::RDS::DBInstance",
+   "Properties": {
+    "AllocatedStorage": "100",
+    "CopyTagsToSnapshot": true,
+    "DBInstanceClass": "db.t4g.micro",
+    "DBName": "langflow",
+    "DBSubnetGroupName": {
+     "Ref": "LangflowDbSubnetGroupF09FE836"
+    },
+    "DeletionProtection": false,
+    "Engine": "postgres",
+    "EngineVersion": "16",
+    "MasterUserPassword": {
+     "Fn::Join": [
+      "",
+      [
+       "{{resolve:secretsmanager:",
+       {
+        "Ref": "LangflowDbSecret126265CE"
+       },
+       ":SecretString:password::}}"
+      ]
+     ]
+    },
+    "MasterUsername": {
+     "Fn::Join": [
+      "",
+      [
+       "{{resolve:secretsmanager:",
+       {
+        "Ref": "LangflowDbSecret126265CE"
+       },
+       ":SecretString:username::}}"
+      ]
+     ]
+    },
+    "MultiAZ": false,
+    "PubliclyAccessible": false,
+    "StorageEncrypted": true,
+    "StorageType": "gp2",
+    "VPCSecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "DbSg495F8305",
+       "GroupId"
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowDb/Resource"
+   }
+  },
+  "ComponentsBucket322C7052": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketEncryption": {
+     "ServerSideEncryptionConfiguration": [
+      {
+       "ServerSideEncryptionByDefault": {
+        "SSEAlgorithm": "AES256"
+       }
+      }
+     ]
+    },
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    },
+    "Tags": [
+     {
+      "Key": "aws-cdk:auto-delete-objects",
+      "Value": "true"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/ComponentsBucket/Resource"
+   }
+  },
+  "ComponentsBucketPolicyA272882E": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "ComponentsBucket322C7052"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:DeleteObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:PutBucketPolicy"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::GetAtt": [
+          "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+          "Arn"
+         ]
+        }
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ComponentsBucket322C7052",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ComponentsBucket322C7052",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/ComponentsBucket/Policy/Resource"
+   }
+  },
+  "ComponentsBucketAutoDeleteObjectsCustomResource6880E5DD": {
+   "Type": "Custom::S3AutoDeleteObjects",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+      "Arn"
+     ]
+    },
+    "BucketName": {
+     "Ref": "ComponentsBucket322C7052"
+    }
+   },
+   "DependsOn": [
+    "ComponentsBucketPolicyA272882E"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/ComponentsBucket/AutoDeleteObjectsCustomResource/Default"
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role"
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1"
+     },
+     "S3Key": "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Description": {
+     "Fn::Join": [
+      "",
+      [
+       "Lambda function for auto-deleting objects in ",
+       {
+        "Ref": "ComponentsBucket322C7052"
+       },
+       " S3 bucket."
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6",
+    "aws:asset:property": "Code"
+   }
+  },
+  "LangflowVectorsBucket": {
+   "Type": "AWS::S3Vectors::VectorBucket",
+   "Properties": {
+    "VectorBucketName": {
+     "Fn::Join": [
+      "",
+      [
+       "langflow-vectors-",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       "-us-east-1"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowVectorsBucket"
+   }
+  },
+  "CreateIndexRole7455D281": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/CreateIndexRole/Resource"
+   }
+  },
+  "CreateIndexRoleDefaultPolicyDFC8D9F8": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3vectors:CreateIndex",
+        "s3vectors:ListIndexes"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:s3vectors:us-east-1:",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":bucket/langflow-vectors-",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           "-us-east-1"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:s3vectors:us-east-1:",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":bucket/langflow-vectors-",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           "-us-east-1/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CreateIndexRoleDefaultPolicyDFC8D9F8",
+    "Roles": [
+     {
+      "Ref": "CreateIndexRole7455D281"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/CreateIndexRole/DefaultPolicy/Resource"
+   }
+  },
+  "CreateVectorIndex4B77080E": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "ZipFile": "\nimport json, urllib.request, boto3\n\ndef send_response(event, context, status, data={}):\n    body = json.dumps({\n        'Status': status,\n        'Reason': data.get('Reason', ''),\n        'PhysicalResourceId': event.get('PhysicalResourceId', 'VectorIndex'),\n        'StackId': event['StackId'],\n        'RequestId': event['RequestId'],\n        'LogicalResourceId': event['LogicalResourceId'],\n        'Data': data,\n    }).encode()\n    req = urllib.request.Request(event['ResponseURL'], data=body,\n        headers={'Content-Type': '', 'Content-Length': len(body)}, method='PUT')\n    urllib.request.urlopen(req)\n\ndef handler(event, context):\n    try:\n        if event['RequestType'] == 'Delete':\n            send_response(event, context, 'SUCCESS')\n            return\n        props = event['ResourceProperties']\n        client = boto3.client('s3vectors', region_name=props['Region'])\n        try:\n            client.create_index(\n                vectorBucketName=props['BucketName'],\n                indexName=props['IndexName'],\n                dataType='float32',\n                dimension=int(props['Dimension']),\n                distanceMetric='cosine',\n            )\n        except client.exceptions.ConflictException:\n            pass  # Index already exists\n        send_response(event, context, 'SUCCESS', {'IndexName': props['IndexName']})\n    except Exception as e:\n        send_response(event, context, 'FAILED', {'Reason': str(e)})\n"
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CreateIndexRole7455D281",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.12",
+    "Timeout": 300
+   },
+   "DependsOn": [
+    "CreateIndexRoleDefaultPolicyDFC8D9F8",
+    "CreateIndexRole7455D281"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/CreateVectorIndex/Resource"
+   }
+  },
+  "CreateVectorIndexLogRetention165D5AEA": {
+   "Type": "Custom::LogRetention",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+      "Arn"
+     ]
+    },
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "CreateVectorIndex4B77080E"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 7
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/CreateVectorIndex/LogRetention/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:DeleteRetentionPolicy",
+        "logs:PutRetentionPolicy"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "Roles": [
+     {
+      "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Handler": "index.handler",
+    "Runtime": "nodejs22.x",
+    "Timeout": 900,
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1"
+     },
+     "S3Key": "2819175352ad1ce0dae768e83fc328fb70fb5f10b4a8ff0ccbcb791f02b0716d.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource",
+    "aws:asset:path": "asset.2819175352ad1ce0dae768e83fc328fb70fb5f10b4a8ff0ccbcb791f02b0716d",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "VectorIndexProviderframeworkonEventServiceRole7B8371F8": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/VectorIndexProvider/framework-onEvent/ServiceRole/Resource"
+   }
+  },
+  "VectorIndexProviderframeworkonEventServiceRoleDefaultPolicy0E7E7FA0": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "CreateVectorIndex4B77080E",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "CreateVectorIndex4B77080E",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "lambda:GetFunction",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "CreateVectorIndex4B77080E",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "VectorIndexProviderframeworkonEventServiceRoleDefaultPolicy0E7E7FA0",
+    "Roles": [
+     {
+      "Ref": "VectorIndexProviderframeworkonEventServiceRole7B8371F8"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/VectorIndexProvider/framework-onEvent/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "VectorIndexProviderframeworkonEventC7992386": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1"
+     },
+     "S3Key": "07a90cc3efdfc34da22208dcd9d211f06f5b0e01b21e778edc7c3966b1f61d57.zip"
+    },
+    "Description": "AWS CDK resource provider framework - onEvent (LangflowStack/VectorIndexProvider)",
+    "Environment": {
+     "Variables": {
+      "USER_ON_EVENT_FUNCTION_ARN": {
+       "Fn::GetAtt": [
+        "CreateVectorIndex4B77080E",
+        "Arn"
+       ]
+      }
+     }
+    },
+    "Handler": "framework.onEvent",
+    "LoggingConfig": {
+     "ApplicationLogLevel": "FATAL",
+     "LogFormat": "JSON"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "VectorIndexProviderframeworkonEventServiceRole7B8371F8",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "VectorIndexProviderframeworkonEventServiceRoleDefaultPolicy0E7E7FA0",
+    "VectorIndexProviderframeworkonEventServiceRole7B8371F8"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/VectorIndexProvider/framework-onEvent/Resource",
+    "aws:asset:path": "asset.07a90cc3efdfc34da22208dcd9d211f06f5b0e01b21e778edc7c3966b1f61d57",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "VectorIndex": {
+   "Type": "AWS::CloudFormation::CustomResource",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "VectorIndexProviderframeworkonEventC7992386",
+      "Arn"
+     ]
+    },
+    "BucketName": {
+     "Fn::Join": [
+      "",
+      [
+       "langflow-vectors-",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       "-us-east-1"
+      ]
+     ]
+    },
+    "IndexName": "langflow-index",
+    "Region": "us-east-1",
+    "Dimension": "1536"
+   },
+   "DependsOn": [
+    "LangflowVectorsBucket"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/VectorIndex/Default"
+   }
+  },
+  "LangflowCluster56EB600F": {
+   "Type": "AWS::ECS::Cluster",
+   "Properties": {
+    "ClusterSettings": [
+     {
+      "Name": "containerInsights",
+      "Value": "enabled"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowCluster/Resource"
+   }
+  },
+  "LangflowTaskRole00FC3926": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowTaskRole/Resource"
+   }
+  },
+  "LangflowTaskRoleDefaultPolicy76314F00": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3vectors:DeleteVectors",
+        "s3vectors:GetVectors",
+        "s3vectors:ListVectors",
+        "s3vectors:PutVectors",
+        "s3vectors:QueryVectors"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:s3vectors:us-east-1:",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":bucket/langflow-vectors-",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          "-us-east-1/index/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ComponentsBucket322C7052",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ComponentsBucket322C7052",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:GetSecretValue"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Ref": "LangflowDbSecret126265CE"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LangflowTaskRoleDefaultPolicy76314F00",
+    "Roles": [
+     {
+      "Ref": "LangflowTaskRole00FC3926"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowTaskRole/DefaultPolicy/Resource"
+   }
+  },
+  "LangflowExecutionRoleD042FEC6": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowExecutionRole/Resource"
+   }
+  },
+  "LangflowExecutionRoleDefaultPolicyDBC2C40C": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:GetSecretValue"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Ref": "LangflowDbSecret126265CE"
+       }
+      },
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "LangflowServiceTaskDefwebLogGroup3C92D8CC",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LangflowExecutionRoleDefaultPolicyDBC2C40C",
+    "Roles": [
+     {
+      "Ref": "LangflowExecutionRoleD042FEC6"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowExecutionRole/DefaultPolicy/Resource"
+   }
+  },
+  "EcsSg17B4B0B3": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "LangflowStack/EcsSg",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/EcsSg/Resource"
+   }
+  },
+  "EcsSgfromLangflowStackLangflowServiceLBSecurityGroupF4536C4C78601F2A6EA8": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "FromPort": 7860,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "EcsSg17B4B0B3",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "LangflowServiceLBSecurityGroupBC1CCFF1",
+      "GroupId"
+     ]
+    },
+    "ToPort": 7860
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/EcsSg/from LangflowStackLangflowServiceLBSecurityGroupF4536C4C:7860"
+   }
+  },
+  "LangflowServiceLBAF143DCC": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     }
+    ],
+    "Scheme": "internet-facing",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "LangflowServiceLBSecurityGroupBC1CCFF1",
+       "GroupId"
+      ]
+     }
+    ],
+    "Subnets": [
+     {
+      "Ref": "LangflowVpcpublicSubnet1Subnet1D3DB5DC"
+     },
+     {
+      "Ref": "LangflowVpcpublicSubnet2Subnet36810BF2"
+     }
+    ],
+    "Type": "application"
+   },
+   "DependsOn": [
+    "LangflowVpcpublicSubnet1DefaultRoute0DC2A049",
+    "LangflowVpcpublicSubnet1RouteTableAssociationE649B1E7",
+    "LangflowVpcpublicSubnet2DefaultRoute2B5A138C",
+    "LangflowVpcpublicSubnet2RouteTableAssociation7F1AFDC7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/LB/Resource"
+   }
+  },
+  "LangflowServiceLBSecurityGroupBC1CCFF1": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Automatically created Security Group for ELB LangflowStackLangflowServiceLB1A4FD4A6",
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow from anyone on port 80",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/LB/SecurityGroup/Resource"
+   }
+  },
+  "LangflowServiceLBSecurityGrouptoLangflowStackEcsSgCD17E94878605347CA3B": {
+   "Type": "AWS::EC2::SecurityGroupEgress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "DestinationSecurityGroupId": {
+     "Fn::GetAtt": [
+      "EcsSg17B4B0B3",
+      "GroupId"
+     ]
+    },
+    "FromPort": 7860,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "LangflowServiceLBSecurityGroupBC1CCFF1",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "ToPort": 7860
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/LB/SecurityGroup/to LangflowStackEcsSgCD17E948:7860"
+   }
+  },
+  "LangflowServiceLBPublicListener8D92EA3F": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "LangflowServiceLBPublicListenerECSGroup9E8AB914"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "LangflowServiceLBAF143DCC"
+    },
+    "Port": 80,
+    "Protocol": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/LB/PublicListener/Resource"
+   }
+  },
+  "LangflowServiceLBPublicListenerECSGroup9E8AB914": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "HealthCheckIntervalSeconds": 30,
+    "HealthCheckPath": "/api/v1/version",
+    "HealthCheckTimeoutSeconds": 10,
+    "HealthyThresholdCount": 2,
+    "Matcher": {
+     "HttpCode": "200"
+    },
+    "Port": 80,
+    "Protocol": "HTTP",
+    "TargetGroupAttributes": [
+     {
+      "Key": "stickiness.enabled",
+      "Value": "false"
+     }
+    ],
+    "TargetType": "ip",
+    "UnhealthyThresholdCount": 3,
+    "VpcId": {
+     "Ref": "LangflowVpc09E9E455"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/LB/PublicListener/ECSGroup/Resource"
+   }
+  },
+  "LangflowServiceTaskDef7D7372BC": {
+   "Type": "AWS::ECS::TaskDefinition",
+   "Properties": {
+    "ContainerDefinitions": [
+     {
+      "Environment": [
+       {
+        "Name": "LANGFLOW_AUTO_LOGIN",
+        "Value": "false"
+       },
+       {
+        "Name": "LANGFLOW_SUPERUSER",
+        "Value": "admin@example.com"
+       },
+       {
+        "Name": "LANGFLOW_WORKERS",
+        "Value": "2"
+       },
+       {
+        "Name": "LANGFLOW_LOG_LEVEL",
+        "Value": "info"
+       },
+       {
+        "Name": "LANGFLOW_COMPONENTS_PATH",
+        "Value": "/app/custom_components"
+       },
+       {
+        "Name": "S3_VECTORS_BUCKET_NAME",
+        "Value": {
+         "Fn::Join": [
+          "",
+          [
+           "langflow-vectors-",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           "-us-east-1"
+          ]
+         ]
+        }
+       },
+       {
+        "Name": "S3_VECTORS_INDEX_NAME",
+        "Value": "langflow-index"
+       },
+       {
+        "Name": "AWS_DEFAULT_REGION",
+        "Value": "us-east-1"
+       },
+       {
+        "Name": "CUSTOM_COMPONENTS_S3_BUCKET",
+        "Value": {
+         "Ref": "ComponentsBucket322C7052"
+        }
+       }
+      ],
+      "Essential": true,
+      "Image": "langflowai/langflow:latest",
+      "LogConfiguration": {
+       "LogDriver": "awslogs",
+       "Options": {
+        "awslogs-group": {
+         "Ref": "LangflowServiceTaskDefwebLogGroup3C92D8CC"
+        },
+        "awslogs-stream-prefix": "langflow",
+        "awslogs-region": "us-east-1"
+       }
+      },
+      "Name": "web",
+      "PortMappings": [
+       {
+        "ContainerPort": 7860,
+        "Protocol": "tcp"
+       }
+      ],
+      "Secrets": [
+       {
+        "Name": "LANGFLOW_DATABASE_URL",
+        "ValueFrom": {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Ref": "LangflowDbSecret126265CE"
+           },
+           ":password::"
+          ]
+         ]
+        }
+       }
+      ]
+     }
+    ],
+    "Cpu": "1024",
+    "ExecutionRoleArn": {
+     "Fn::GetAtt": [
+      "LangflowExecutionRoleD042FEC6",
+      "Arn"
+     ]
+    },
+    "Family": "LangflowStackLangflowServiceTaskDef70992081",
+    "Memory": "2048",
+    "NetworkMode": "awsvpc",
+    "RequiresCompatibilities": [
+     "FARGATE"
+    ],
+    "TaskRoleArn": {
+     "Fn::GetAtt": [
+      "LangflowTaskRole00FC3926",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/TaskDef/Resource"
+   }
+  },
+  "LangflowServiceTaskDefwebLogGroup3C92D8CC": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "RetentionInDays": 7
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/TaskDef/web/LogGroup/Resource"
+   }
+  },
+  "LangflowService9CF52270": {
+   "Type": "AWS::ECS::Service",
+   "Properties": {
+    "Cluster": {
+     "Ref": "LangflowCluster56EB600F"
+    },
+    "DeploymentConfiguration": {
+     "Alarms": {
+      "AlarmNames": [],
+      "Enable": false,
+      "Rollback": false
+     },
+     "MaximumPercent": 200,
+     "MinimumHealthyPercent": 50
+    },
+    "DesiredCount": 1,
+    "EnableECSManagedTags": false,
+    "HealthCheckGracePeriodSeconds": 60,
+    "LaunchType": "FARGATE",
+    "LoadBalancers": [
+     {
+      "ContainerName": "web",
+      "ContainerPort": 7860,
+      "TargetGroupArn": {
+       "Ref": "LangflowServiceLBPublicListenerECSGroup9E8AB914"
+      }
+     }
+    ],
+    "NetworkConfiguration": {
+     "AwsvpcConfiguration": {
+      "AssignPublicIp": "DISABLED",
+      "SecurityGroups": [
+       {
+        "Fn::GetAtt": [
+         "EcsSg17B4B0B3",
+         "GroupId"
+        ]
+       }
+      ],
+      "Subnets": [
+       {
+        "Ref": "LangflowVpcprivateSubnet1Subnet735032DA"
+       },
+       {
+        "Ref": "LangflowVpcprivateSubnet2Subnet44AA2EDA"
+       }
+      ]
+     }
+    },
+    "TaskDefinition": {
+     "Ref": "LangflowServiceTaskDef7D7372BC"
+    }
+   },
+   "DependsOn": [
+    "LangflowServiceLBPublicListenerECSGroup9E8AB914",
+    "LangflowServiceLBPublicListener8D92EA3F",
+    "LangflowTaskRoleDefaultPolicy76314F00",
+    "LangflowTaskRole00FC3926"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowService/Service/Service"
+   }
+  },
+  "IpV4Set0": {
+   "Type": "AWS::WAFv2::IPSet",
+   "Properties": {
+    "Addresses": [
+     "0.0.0.0/1"
+    ],
+    "IPAddressVersion": "IPV4",
+    "Scope": "REGIONAL"
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/IpV4Set0"
+   }
+  },
+  "IpV4Set1": {
+   "Type": "AWS::WAFv2::IPSet",
+   "Properties": {
+    "Addresses": [
+     "128.0.0.0/1"
+    ],
+    "IPAddressVersion": "IPV4",
+    "Scope": "REGIONAL"
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/IpV4Set1"
+   }
+  },
+  "LangflowWaf": {
+   "Type": "AWS::WAFv2::WebACL",
+   "Properties": {
+    "DefaultAction": {
+     "Block": {}
+    },
+    "Rules": [
+     {
+      "Action": {
+       "Allow": {}
+      },
+      "Name": "AllowIpV4-0",
+      "Priority": 1,
+      "Statement": {
+       "IPSetReferenceStatement": {
+        "Arn": {
+         "Fn::GetAtt": [
+          "IpV4Set0",
+          "Arn"
+         ]
+        }
+       }
+      },
+      "VisibilityConfig": {
+       "CloudWatchMetricsEnabled": true,
+       "MetricName": "AllowIpV4-0",
+       "SampledRequestsEnabled": true
+      }
+     },
+     {
+      "Action": {
+       "Allow": {}
+      },
+      "Name": "AllowIpV4-1",
+      "Priority": 2,
+      "Statement": {
+       "IPSetReferenceStatement": {
+        "Arn": {
+         "Fn::GetAtt": [
+          "IpV4Set1",
+          "Arn"
+         ]
+        }
+       }
+      },
+      "VisibilityConfig": {
+       "CloudWatchMetricsEnabled": true,
+       "MetricName": "AllowIpV4-1",
+       "SampledRequestsEnabled": true
+      }
+     }
+    ],
+    "Scope": "REGIONAL",
+    "VisibilityConfig": {
+     "CloudWatchMetricsEnabled": true,
+     "MetricName": "LangflowWaf",
+     "SampledRequestsEnabled": true
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/LangflowWaf"
+   }
+  },
+  "WafAssociation": {
+   "Type": "AWS::WAFv2::WebACLAssociation",
+   "Properties": {
+    "ResourceArn": {
+     "Ref": "LangflowServiceLBAF143DCC"
+    },
+    "WebACLArn": {
+     "Fn::GetAtt": [
+      "LangflowWaf",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/WafAssociation"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/5VTTW/bMAz9Lc1Z0VYXu+yWj7YIEKxGXHSHYQhomfHU2FIgUskKw/99kBXHRtoN2ImPj08UJT0lMvlyJ29v4ERTVeynlc5lkzGovYATbRtUiWxeDkosduYlXYjU55VWmc8NcuAGtLGe8RnyCgd+4GZEVmlgbc1FHMD9Kg3hG/AjMJ7gTaROH4FxaLwyjM7gRRAnOWczZlC/ajQsMlTeaX57dNYfuhn+SaxM6ZDoHX/f0a0gVA6ZajBQopNN1uVneUAxPIMrkUdjXATXlVa4gmSzBIYcCFeGGIxCEU96GXI5f0f00lbQnWzmXu3jIBH9aCa1/q3N5Otk/Irh+ehOdiWSUTrzbJdYIeNT/oqKadL+FLGU2kqrt6FrzP+jd1yQMTCG045az4GwFRpq2WxstEcXhy0jakUFdV6AbB68Ub1VetyKypYkm7UtN8houvralpd76nG4pS0QIZOchSBQkWwWlSdGF5Q9fABXQjAo7Ze400b3e14z1jBog27Enddm6I5aRctH2Ibttgfg4FqSs8Oh0qoz/tpCMYcqvGRxtRwrINaqslDknUKb8pjI5uPVLh53lI91mhjNWdPjUT3a8nJro7QVJ9iFXcOnS7Pose+YzxbrAY0+ctuKDZL1LpzfE9t6SHfmL6XU2aMu0AVTiO55MoZSm1KoTrd1ZyHJXhq6PXk+eG6FsQXKV/p0TBJ5eys/37yS1lPnDesa5SbGP6yRYjTVBAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "LangflowStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "LangflowServiceLoadBalancerDNSED54D35A": {
+   "Value": {
+    "Fn::GetAtt": [
+     "LangflowServiceLBAF143DCC",
+     "DNSName"
+    ]
+   }
+  },
+  "LangflowServiceServiceURLD2945470": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "http://",
+      {
+       "Fn::GetAtt": [
+        "LangflowServiceLBAF143DCC",
+        "DNSName"
+       ]
+      }
+     ]
+    ]
+   }
+  },
+  "LangflowUrl": {
+   "Description": "Langflow UI URL",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "http://",
+      {
+       "Fn::GetAtt": [
+        "LangflowServiceLBAF143DCC",
+        "DNSName"
+       ]
+      }
+     ]
+    ]
+   }
+  },
+  "VectorsBucketName": {
+   "Description": "S3 Vectors bucket name",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "langflow-vectors-",
+      {
+       "Ref": "AWS::AccountId"
+      },
+      "-us-east-1"
+     ]
+    ]
+   }
+  },
+  "ComponentsBucketName": {
+   "Description": "S3 bucket for custom Langflow components",
+   "Value": {
+    "Ref": "ComponentsBucket322C7052"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

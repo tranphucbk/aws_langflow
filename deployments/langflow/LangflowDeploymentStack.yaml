@@ -1,0 +1,421 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Langflow on AWS one-click deployment with Amazon S3 Vectors'
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "Notification"
+        Parameters:
+          - NotificationEmailAddress
+      - Label:
+          default: "Langflow Settings"
+        Parameters:
+          - SuperuserEmail
+          - LangflowVersion
+      - Label:
+          default: "Infrastructure"
+        Parameters:
+          - Region
+          - DatabaseInstanceType
+          - EmbeddingDimension
+      - Label:
+          default: "Network Access"
+        Parameters:
+          - AllowedIpV4Cidrs
+          - AllowedIpV6Cidrs
+    ParameterLabels:
+      NotificationEmailAddress:
+        default: "Notification Email"
+      SuperuserEmail:
+        default: "Langflow Admin Email"
+      LangflowVersion:
+        default: "Langflow Docker Version"
+      Region:
+        default: "AWS Region"
+      DatabaseInstanceType:
+        default: "RDS Instance Type"
+      EmbeddingDimension:
+        default: "Embedding Vector Dimension"
+      AllowedIpV4Cidrs:
+        default: "Allowed IPv4 CIDRs"
+      AllowedIpV6Cidrs:
+        default: "Allowed IPv6 CIDRs"
+
+Parameters:
+  NotificationEmailAddress:
+    Type: String
+    Description: Email address to receive deployment start and completion notifications
+    AllowedPattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+    ConstraintDescription: Must be a valid email address
+
+  SuperuserEmail:
+    Type: String
+    Description: Email address for the Langflow admin account (used to log in)
+    AllowedPattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+    ConstraintDescription: Must be a valid email address
+
+  LangflowVersion:
+    Type: String
+    Default: "latest"
+    Description: Langflow Docker image tag (e.g., latest, 1.3.0)
+
+  Region:
+    Type: String
+    Default: us-east-1
+    Description: >
+      AWS region for Langflow deployment. Must be a region where Amazon S3 Vectors is available.
+      Supported regions include: us-east-1, us-west-2, eu-west-1, ap-northeast-1, and others.
+      See https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-regions.html
+
+  DatabaseInstanceType:
+    Type: String
+    Default: "db.t4g.micro"
+    AllowedValues:
+      - db.t4g.micro
+      - db.t4g.small
+      - db.t4g.medium
+      - db.t3.micro
+      - db.t3.small
+    Description: >
+      RDS PostgreSQL instance type. Used for Langflow app metadata only (users, flows, sessions).
+      Vector embeddings are stored in Amazon S3 Vectors, not in the database.
+
+  EmbeddingDimension:
+    Type: Number
+    Default: 1536
+    AllowedValues:
+      - 256
+      - 512
+      - 1024
+      - 1536
+    Description: >
+      Vector embedding dimension. Must match the model you use in Langflow.
+      1536 = Amazon Titan Text Embeddings v2 / OpenAI text-embedding-ada-002.
+      Cannot be changed after deployment (S3 Vectors index is immutable).
+
+  AllowedIpV4Cidrs:
+    Type: String
+    Default: ""
+    Description: >
+      Comma-separated IPv4 CIDR ranges allowed to access Langflow (e.g., 203.0.113.0/24,198.51.100.0/24).
+      Leave empty to allow all IPv4 addresses (not recommended for production).
+
+  AllowedIpV6Cidrs:
+    Type: String
+    Default: ""
+    Description: >
+      Comma-separated IPv6 CIDR ranges allowed to access Langflow.
+      Leave empty to allow all IPv6 addresses.
+
+Resources:
+  # ── SNS Topic for deployment notifications ──────────────────────────────────
+  DeploymentNotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: Langflow Deployment Notifications
+      TopicName: !Sub 'Notification-for-${AWS::StackName}'
+      KmsMasterKeyId: 'alias/aws/sns'
+
+  DeploymentNotificationSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      TopicArn: !Ref DeploymentNotificationTopic
+      Endpoint: !Ref NotificationEmailAddress
+
+  # ── IAM Role for CodeBuild ───────────────────────────────────────────────────
+  CodeBuildServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codebuild.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub "arn:${AWS::Partition}:iam::aws:policy/AdministratorAccess"
+
+  CodeBuildServiceRolePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: CodeBuildServiceRolePolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Resource:
+              - !Sub "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/${LangflowDeploymentProject}"
+              - !Sub "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/${LangflowDeploymentProject}:*"
+          - Effect: Allow
+            Action:
+              - sns:Publish
+            Resource: !Ref DeploymentNotificationTopic
+      Roles:
+        - !Ref CodeBuildServiceRole
+
+  # ── CodeBuild Project ────────────────────────────────────────────────────────
+  LangflowDeploymentProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub 'CodeBuild-for-${AWS::StackName}'
+      Description: 'Deploys Langflow on AWS with Amazon S3 Vectors'
+      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
+      Artifacts:
+        Type: NO_ARTIFACTS
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+      Environment:
+        Type: LINUX_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux-x86_64-standard:5.0
+        PrivilegedMode: false
+        EnvironmentVariables:
+          - Name: REGION
+            Value: !Ref Region
+          - Name: LANGFLOW_VERSION
+            Value: !Ref LangflowVersion
+          - Name: SUPERUSER_EMAIL
+            Value: !Ref SuperuserEmail
+          - Name: DB_INSTANCE_TYPE
+            Value: !Ref DatabaseInstanceType
+          - Name: EMBEDDING_DIMENSION
+            Value: !Ref EmbeddingDimension
+          - Name: ALLOWED_IPV4_CIDRS
+            Value: !Ref AllowedIpV4Cidrs
+          - Name: ALLOWED_IPV6_CIDRS
+            Value: !Ref AllowedIpV6Cidrs
+          - Name: SNS_TOPIC_ARN
+            Value: !Ref DeploymentNotificationTopic
+          - Name: CF_STACK_NAME
+            Value: !Ref AWS::StackName
+      Source:
+        Type: NO_SOURCE
+        BuildSpec: |
+          version: 0.2
+
+          phases:
+            install:
+              runtime-versions:
+                nodejs: 22
+              commands:
+                - echo "=== Langflow Deployment Started ==="
+                - aws sns publish
+                    --topic-arn ${SNS_TOPIC_ARN}
+                    --subject "Langflow Deployment Started"
+                    --message "Deployment of Langflow has started. You will receive another notification with the URL when deployment is complete."
+                - git clone https://github.com/aws-samples/sample-one-click-generative-ai-solutions.git
+                - cd sample-one-click-generative-ai-solutions/deployments/langflow/cdk
+                - npm ci
+
+            pre_build:
+              commands:
+                - echo "=== Preparing deployment parameters ==="
+                - export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+                - export CDK_DEFAULT_REGION=${REGION}
+
+                # Create S3 bucket for custom Langflow components
+                - COMPONENTS_BUCKET="langflow-components-${CDK_DEFAULT_ACCOUNT}-${REGION}"
+                - aws s3 mb s3://${COMPONENTS_BUCKET} --region ${REGION} 2>/dev/null || true
+                - aws s3api put-public-access-block
+                    --bucket ${COMPONENTS_BUCKET}
+                    --public-access-block-configuration BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
+                    2>/dev/null || true
+
+                # Upload custom S3 Vectors component so ECS can download it at startup
+                - aws s3 cp
+                    $CODEBUILD_SRC_DIR/sample-one-click-generative-ai-solutions/deployments/langflow/custom_components/s3_vectors_store.py
+                    s3://${COMPONENTS_BUCKET}/s3_vectors_store.py
+                - echo "Uploaded s3_vectors_store.py to s3://${COMPONENTS_BUCKET}/"
+
+                # Generate a random secret key for Langflow session signing
+                - LANGFLOW_SECRET_KEY=$(openssl rand -hex 32)
+
+                # Generate a random superuser password and store in Secrets Manager
+                - SUPERUSER_PASSWORD=$(openssl rand -base64 16 | tr -d '/+=')
+                - LANGFLOW_SECRET_ARN=$(aws secretsmanager create-secret
+                    --name "langflow/${CF_STACK_NAME}/superuser-password"
+                    --secret-string "{\"password\":\"${SUPERUSER_PASSWORD}\",\"email\":\"${SUPERUSER_EMAIL}\"}"
+                    --region ${REGION}
+                    --query ARN --output text 2>/dev/null
+                  || aws secretsmanager put-secret-value
+                    --secret-id "langflow/${CF_STACK_NAME}/superuser-password"
+                    --secret-string "{\"password\":\"${SUPERUSER_PASSWORD}\",\"email\":\"${SUPERUSER_EMAIL}\"}"
+                    --region ${REGION}
+                    --query ARN --output text)
+                - echo "Superuser credentials stored in Secrets Manager"
+
+            build:
+              commands:
+                - cd $CODEBUILD_SRC_DIR/sample-one-click-generative-ai-solutions/deployments/langflow/cdk
+                - echo "=== Checking CDK bootstrap ==="
+                - |
+                  BOOTSTRAP_STACK="CDKToolkit"
+                  BOOTSTRAP_EXISTS=$(aws cloudformation describe-stacks --stack-name ${BOOTSTRAP_STACK} --region ${REGION} 2>&1 || echo "NOT_EXISTS")
+                  if [[ "${BOOTSTRAP_EXISTS}" == *"does not exist"* ]] || [[ "${BOOTSTRAP_EXISTS}" == "NOT_EXISTS" ]]; then
+                    echo "Running CDK bootstrap in ${REGION}..."
+                    npx cdk bootstrap aws://${CDK_DEFAULT_ACCOUNT}/${REGION}
+                  else
+                    echo "CDK bootstrap already exists, skipping."
+                  fi
+
+                - echo "=== Deploying LangflowStack ==="
+                - |
+                  npx cdk deploy LangflowStack --require-approval never \
+                    -c region=${REGION} \
+                    -c langflowVersion=${LANGFLOW_VERSION} \
+                    -c superuserEmail=${SUPERUSER_EMAIL} \
+                    -c dbInstanceType=${DB_INSTANCE_TYPE} \
+                    -c embeddingDimension=${EMBEDDING_DIMENSION} \
+                    -c allowedIpV4Cidrs="${ALLOWED_IPV4_CIDRS}" \
+                    -c allowedIpV6Cidrs="${ALLOWED_IPV6_CIDRS}" \
+                    -c componentsBucket=${COMPONENTS_BUCKET} \
+                    -c secretKey=${LANGFLOW_SECRET_KEY}
+
+                - echo "=== Retrieving deployment outputs ==="
+                - |
+                  APP_URL=$(aws cloudformation describe-stacks \
+                    --stack-name LangflowStack \
+                    --region ${REGION} \
+                    --query "Stacks[0].Outputs[?OutputKey=='LangflowUrl'].OutputValue" \
+                    --output text)
+                  VECTORS_BUCKET=$(aws cloudformation describe-stacks \
+                    --stack-name LangflowStack \
+                    --region ${REGION} \
+                    --query "Stacks[0].Outputs[?OutputKey=='VectorsBucketName'].OutputValue" \
+                    --output text)
+
+                  cat << DEPLOY_EOF > /tmp/deployment-info.txt
+                  ===================================================
+                  Langflow Deployment Completed Successfully!
+                  ===================================================
+
+                  Deployment Time: $(date '+%Y-%m-%d %H:%M:%S UTC')
+                  Region: ${REGION}
+
+                  --- ACCESS ---
+                  Langflow URL: ${APP_URL}
+                  Admin Email:  ${SUPERUSER_EMAIL}
+                  Admin Pass:   ${SUPERUSER_PASSWORD}
+                  (Password also saved in AWS Secrets Manager: langflow/${CF_STACK_NAME}/superuser-password)
+
+                  --- VECTOR DATABASE ---
+                  S3 Vectors Bucket: ${VECTORS_BUCKET}
+                  Vector Index:      langflow-index
+                  Embedding Dim:     ${EMBEDDING_DIMENSION}
+
+                  --- NEXT STEPS ---
+                  1. Open ${APP_URL} in your browser
+                  2. Log in with the admin credentials above
+                  3. In Langflow, add a flow and use "Amazon S3 Vectors" component for RAG
+
+                  --- CLEANUP (when done) ---
+                  aws cloudformation delete-stack --stack-name LangflowStack --region ${REGION}
+                  aws cloudformation delete-stack --stack-name ${CF_STACK_NAME}
+                  ===================================================
+                  DEPLOY_EOF
+
+            post_build:
+              commands:
+                - echo "=== Sending completion notification ==="
+                - aws sns publish
+                    --topic-arn "${SNS_TOPIC_ARN}"
+                    --subject "Langflow Deployment Complete"
+                    --message file:///tmp/deployment-info.txt
+                - echo "=== Cleanup ==="
+                - rm -rf $CODEBUILD_SRC_DIR/sample-one-click-generative-ai-solutions
+
+      TimeoutInMinutes: 60
+
+  # ── Lambda Custom Resource — triggers CodeBuild automatically ────────────────
+  TriggerFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.handler
+      Role: !GetAtt TriggerFunctionRole.Arn
+      Runtime: nodejs20.x
+      Timeout: 30
+      Code:
+        ZipFile: |
+          const { CodeBuildClient, StartBuildCommand } = require('@aws-sdk/client-codebuild');
+          const response = require('cfn-response');
+
+          exports.handler = async (event, context) => {
+            console.log('Event:', JSON.stringify(event, null, 2));
+            const physicalResourceId = `CodeBuildTrigger-${event.ResourceProperties.ProjectName}`;
+            const responseData = {};
+
+            try {
+              const codebuild = new CodeBuildClient({
+                region: process.env.AWS_REGION,
+                maxAttempts: 3
+              });
+
+              if (event.RequestType === 'Create' || event.RequestType === 'Update') {
+                const command = new StartBuildCommand({
+                  projectName: event.ResourceProperties.ProjectName
+                });
+                const result = await codebuild.send(command);
+                responseData.BuildId = result.build.id;
+              }
+
+              await response.send(event, context, response.SUCCESS, responseData, physicalResourceId);
+            } catch (error) {
+              console.error('Error:', error);
+              await response.send(event, context, response.FAILED, { Error: error.message }, physicalResourceId);
+            }
+          };
+
+  TriggerFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+      Policies:
+        - PolicyName: CodeBuildStartPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: codebuild:StartBuild
+                Resource: !GetAtt LangflowDeploymentProject.Arn
+
+  DeploymentTrigger:
+    Type: AWS::CloudFormation::CustomResource
+    Properties:
+      ServiceToken: !GetAtt TriggerFunction.Arn
+      ProjectName: !Ref LangflowDeploymentProject
+      ServiceTimeout: 3600
+
+Outputs:
+  NotificationTopicArn:
+    Description: ARN of the SNS topic for deployment notifications
+    Value: !Ref DeploymentNotificationTopic
+
+  CodeBuildProjectName:
+    Description: Name of the CodeBuild project
+    Value: !Ref LangflowDeploymentProject
+
+  CodeBuildLogGroup:
+    Description: CloudWatch Logs group to monitor deployment progress
+    Value: !Sub '/aws/codebuild/${LangflowDeploymentProject}'
+
+  DeploymentStatus:
+    Description: Deployment status
+    Value: !Sub >
+      Deployment initiated. Check your email at ${NotificationEmailAddress} for progress.
+      Monitor logs at CloudWatch Log Group: /aws/codebuild/${LangflowDeploymentProject}

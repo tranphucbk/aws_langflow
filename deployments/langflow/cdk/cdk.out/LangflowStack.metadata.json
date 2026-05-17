@@ -1,0 +1,1290 @@
+{
+  "/LangflowStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/LangflowStack/LangflowVectorsBucket": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVectorsBucket"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:78:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/IpV4Set0": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IpV4Set0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:274: (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:274:1)",
+        "Array.map (:)",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:269:8)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/IpV4Set1": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "IpV4Set1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:274: (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:274:1)",
+        "Array.map (:)",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:269:8)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowWaf": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowWaf"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:289:20)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/WafAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "WafAssociation"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:300:5)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:306:5)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/VectorsBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VectorsBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:311:5)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/ComponentsBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ComponentsBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:316:5)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/LangflowStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpc09E9E455"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcIGW8B4922CB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcVPCGW8E6CFCD5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowDbSecret/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowDbSecret126265CE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Secret2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:40:22)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/DbSg/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DbSg495F8305"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new SecurityGroup2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:48:18)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/DbSg/from LangflowStackEcsSgCD17E948:5432": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DbSgfromLangflowStackEcsSgCD17E9485432E55B00D3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:208:10)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowDb/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowDb6B4BED68"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DatabaseInstance2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:50:16)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/ComponentsBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ComponentsBucket322C7052"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:67:30)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/LangflowStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:67:30)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:67:30)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/CreateIndexRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CreateIndexRole7455D281"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:86:29)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/CreateVectorIndex/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CreateVectorIndex4B77080E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:102:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:102:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/VectorIndex/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VectorIndex"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new CustomResource2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:153:25)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowCluster/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowCluster56EB600F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Cluster2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:165:21)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowTaskRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowTaskRole00FC3926"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:171:22)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowExecutionRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowExecutionRoleD042FEC6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:198:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/EcsSg/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcsSg17B4B0B3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new SecurityGroup2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:207:19)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/EcsSg/from LangflowStackLangflowServiceLBSecurityGroupF4536C4C:7860": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcsSgfromLangflowStackLangflowServiceLBSecurityGroupF4536C4C78601F2A6EA8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/LoadBalancerDNS": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceLoadBalancerDNSED54D35A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/ServiceURL": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceServiceURLD2945470"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/Service": [
+    {
+      "type": "aws:cdk:warning",
+      "data": "Enable the 'circuitBreaker' property to trigger a quicker deployment failure if tasks are failing to come start (without this setting deployments may take up to 3 hours to fail). [ack: @aws-cdk/aws-ecs:shouldUseCircuitBreaker]",
+      "trace": [
+        "Annotations.addMessage (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/annotations.js:1:2399)",
+        "Annotations.addWarningV2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1087)",
+        "new BaseService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ecs/lib/base/base-service.js:1:13431)",
+        "new BaseService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/no-box-stack-traces.js:1:345)",
+        "new FargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ecs/lib/fargate/fargate-service.js:1:6805)",
+        "new FargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/prop-injectable.js:1:855)",
+        "new ApplicationLoadBalancedFargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ecs-patterns/lib/fargate/application-load-balanced-fargate-service.js:1:6392)",
+        "new ApplicationLoadBalancedFargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/prop-injectable.js:1:855)",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "Object.<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "Module._compile (node:internal/modules/cjs/loader:1546:14)",
+        "Module.m._compile (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/index.ts:1618:23)",
+        "node:internal/modules/cjs/loader:1689:10",
+        "Object.require.extensions.<computed> [as .ts] (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/index.ts:1621:12)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:315:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:218:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "phase4 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:649:14)",
+        "bootstrap (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:95:10)",
+        "main (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:55:10)",
+        "Object.<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:800:3)",
+        "Module._compile (node:internal/modules/cjs/loader:1546:14)",
+        "Object.<anonymous> (node:internal/modules/cjs/loader:1689:10)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:315:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:218:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "node:internal/main/run_main_module:36:49"
+      ]
+    },
+    {
+      "type": "aws:cdk:warning",
+      "data": "minHealthyPercent has not been configured so the default value of 50% is used. The number of running tasks will decrease below the desired count during deployments etc. See https://github.com/aws/aws-cdk/issues/31705 [ack: @aws-cdk/aws-ecs:minHealthyPercent]",
+      "trace": [
+        "Annotations.addMessage (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/annotations.js:1:2399)",
+        "Annotations.addWarningV2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1087)",
+        "new BaseService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ecs/lib/base/base-service.js:1:14346)",
+        "new BaseService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/no-box-stack-traces.js:1:345)",
+        "new FargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ecs/lib/fargate/fargate-service.js:1:6805)",
+        "new FargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/prop-injectable.js:1:855)",
+        "new ApplicationLoadBalancedFargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ecs-patterns/lib/fargate/application-load-balanced-fargate-service.js:1:6392)",
+        "new ApplicationLoadBalancedFargateService2 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/core/lib/prop-injectable.js:1:855)",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "Object.<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "Module._compile (node:internal/modules/cjs/loader:1546:14)",
+        "Module.m._compile (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/index.ts:1618:23)",
+        "node:internal/modules/cjs/loader:1689:10",
+        "Object.require.extensions.<computed> [as .ts] (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/index.ts:1621:12)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:315:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:218:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "phase4 (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:649:14)",
+        "bootstrap (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:95:10)",
+        "main (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:55:10)",
+        "Object.<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/ts-node/src/bin.ts:800:3)",
+        "Module._compile (node:internal/modules/cjs/loader:1546:14)",
+        "Object.<anonymous> (node:internal/modules/cjs/loader:1689:10)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:315:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:218:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "node:internal/main/run_main_module:36:49"
+      ]
+    }
+  ],
+  "/LangflowStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet1Subnet1D3DB5DC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet1RouteTable5307F07B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet1RouteTableAssociationE649B1E7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet1DefaultRoute0DC2A049"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet1EIP6AC23034"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet1NATGatewayEA2DD6FD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet2Subnet36810BF2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet2RouteTable9ECA673E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet2RouteTableAssociation7F1AFDC7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/publicSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcpublicSubnet2DefaultRoute2B5A138C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet1Subnet735032DA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet1RouteTableF34652EA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet1RouteTableAssociation90E6DB9C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet1DefaultRouteD39AA85E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet2Subnet44AA2EDA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet2RouteTableA5FD2E59"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet2RouteTableAssociationB5584F5D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/privateSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcprivateSubnet2DefaultRoute92E7E793"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/isolatedSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcisolatedSubnet1SubnetACFEF664"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/isolatedSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcisolatedSubnet1RouteTable7B6D605F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/isolatedSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcisolatedSubnet1RouteTableAssociation293D238A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/isolatedSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcisolatedSubnet2Subnet8680E5DD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/isolatedSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcisolatedSubnet2RouteTableF7D276C2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowVpc/isolatedSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowVpcisolatedSubnet2RouteTableAssociationEF69F2AC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/node_modules/aws-cdk-lib/aws-ec2/lib/vpc.js:1:262 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:29:17)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowDbSecret/Attachment/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowDbSecretAttachment7D78035E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DatabaseInstance2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:50:16)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowDb/SubnetGroup/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowDbSubnetGroupF09FE836"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DatabaseInstance2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:50:16)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/ComponentsBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ComponentsBucketPolicyA272882E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:67:30)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/LangflowStack/ComponentsBucket/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ComponentsBucketAutoDeleteObjectsCustomResource6880E5DD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:67:30)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/CreateIndexRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CreateIndexRoleDefaultPolicyDFC8D9F8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:92:21)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/CreateVectorIndex/LogRetention/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CreateVectorIndexLogRetention165D5AEA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:102:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:102:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/VectorIndexProvider/framework-onEvent/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VectorIndexProviderframeworkonEventC7992386"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Provider2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:149:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowTaskRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowTaskRoleDefaultPolicy76314F00"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:176:14)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowExecutionRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowExecutionRoleDefaultPolicyDBC2C40C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantRead in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:204:14)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/LB/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceLBAF143DCC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/TaskDef/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceTaskDef7D7372BC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/Service/Service": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowService9CF52270"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:102:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/VectorIndexProvider/framework-onEvent/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VectorIndexProviderframeworkonEventServiceRole7B8371F8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Provider2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:149:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/LB/SecurityGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceLBSecurityGroupBC1CCFF1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/LB/SecurityGroup/to LangflowStackEcsSgCD17E948:7860": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceLBSecurityGrouptoLangflowStackEcsSgCD17E94878605347CA3B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/LB/PublicListener/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceLBPublicListener8D92EA3F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/VectorIndexProvider/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VectorIndexProviderframeworkonEventServiceRoleDefaultPolicy0E7E7FA0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Provider2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:149:27)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/LB/PublicListener/ECSGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceLBPublicListenerECSGroup9E8AB914"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/LangflowStack/LangflowService/TaskDef/web/LogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LangflowServiceTaskDefwebLogGroup3C92D8CC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ApplicationLoadBalancedFargateService2 in aws-cdk-lib...",
+        "new LangflowStack (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/lib/langflow-stack.ts:214:28)",
+        "<anonymous> (/Users/tdphuc0110/Desktop/AWS/Project/sample-one-click-generative-ai-solutions/deployments/langflow/cdk/bin/app.ts:11:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}
