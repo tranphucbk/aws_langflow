@@ -250,6 +250,7 @@ def handler(event, context):
         publicLoadBalancer: true,
         listenerPort: 80,
         healthCheckGracePeriod: cdk.Duration.minutes(5),
+        circuitBreaker: { rollback: false },
       }
     );
 
