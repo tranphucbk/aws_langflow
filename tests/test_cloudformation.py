@@ -27,6 +27,10 @@ TEMPLATES = [
     {
         "name": "SDPM",
         "path": REPO_ROOT / "deployments" / "sdpm" / "SdpmDeploymentStack.yaml"
+    },
+    {
+        "name": "Langflow",
+        "path": REPO_ROOT / "deployments" / "langflow" / "LangflowDeploymentStack.yaml"
     }
 ]
 

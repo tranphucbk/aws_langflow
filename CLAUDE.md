@@ -1,98 +1,122 @@
-# CLAUDE.md - CloudFormation One-Click Deployment Context
+# CLAUDE.md
 
-This project provides CloudFormation templates for one-click deployment of generative AI solutions. When working on deployment templates, follow these key guidelines:
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Core Architecture Pattern
+## Project Overview
 
-All one-click deployments follow this pattern:
-1. User deploys CloudFormation stack
-2. Stack creates SNS topic, CodeBuild project, and Lambda trigger
-3. Lambda automatically triggers CodeBuild
-4. CodeBuild clones repo, updates parameters, deploys application stack
-5. Notifications sent via SNS at start and completion
+This project provides CloudFormation templates for one-click deployment of generative AI solutions on AWS. Users click "Launch Stack", fill in parameters (primarily an email address), and the stack auto-deploys complex applications without any local tooling.
 
-## Key Implementation Rules
-
-### Required Components
-- **SNS Topic**: For deployment notifications (email subscription)
-- **CodeBuild Project**: With IAM roles, environment variables from CF parameters
-- **Lambda Custom Resource**: Auto-triggers CodeBuild on stack creation
-- **IAM Roles**: For CodeBuild and Lambda with least privilege
-
-### Parameter Guidelines
-- **Required**: `NotificationEmailAddress` (with email validation pattern)
-- **Optional with defaults**: Environment, regions, security settings
-- **Validation**: Use AllowedPattern, AllowedValues, ConstraintDescription
-
-### CodeBuild BuildSpec Structure
-1. **Install**: Setup runtime, clone repo, install dependencies
-2. **Pre-build**: Update application parameters
-3. **Build**: Check/run CDK bootstrap, deploy application stack
-4. **Post-build**: Send completion notification with app details
-
-### Best Practice: Parameter Extraction
-✅ **RECOMMENDED**: Use CloudFormation outputs
-```bash
-STACK_NAME=$(aws cloudformation describe-stacks --query "Stacks[?contains(StackName, 'AppPattern')].StackName" --output text)
-APP_URL=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query "Stacks[0].Outputs[?contains(OutputKey, 'FrontendUrl')].OutputValue" --output text)
-```
-
-❌ **AVOID**: Parsing temporary files like .cdk-outputs.json
-
-### Security Best Practices
-- Default to restrictive IP ranges with clear warnings for public access
-- Disable self-signup by default
-- Require domain restrictions when self-signup enabled
-- Use least privilege IAM permissions
-
-### Error Handling
-- Custom resource must handle and report errors properly
-- Include meaningful error messages in CodeBuild scripts
-- Test parameter extraction queries independently before embedding
+Current solutions (each in `deployments/<name>/`): genu, dify, brchat, comfyui, genstudio, langflow, rapid, ai-persona, sdpm, d360, c360, kiro-ide, cursor, aiagentdev, remote-swe-agents, roleplay, langfuse.
 
 ## Development Commands
 
-### Deployment (use JSON format for complex parameters)
+### Documentation (MkDocs)
 ```bash
+uv sync                # Install Python dependencies
+uv run mkdocs serve    # Preview docs locally at http://127.0.0.1:8000
+```
+
+### Testing
+```bash
+pytest tests/                                     # Run all template validation tests
+pytest tests/ -k "GenU"                           # Run tests for a specific solution
+pytest tests/test_cloudformation.py::test_template_validates_with_aws_cli  # Run specific test function
+```
+
+Note: The test suite currently covers only 6 of the 17 solutions (GenU, Dify, BrChat, AIPersona, SDPM, Langflow). When adding a new solution, add it to the `TEMPLATES` list in `tests/test_cloudformation.py`.
+
+### Template Validation
+```bash
+aws cloudformation validate-template --template-body file://deployments/<name>/<Template>.yaml
+```
+
+### Deploy / Monitor / Teardown
+```bash
+# Deploy (use JSON for multiple parameters)
 aws cloudformation create-stack \
-  --stack-name XXXX \
-  --template-body file://XXXX.yaml \
+  --stack-name my-stack \
+  --template-body file://deployments/<name>/<Template>.yaml \
   --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
   --parameters '[
-    {"ParameterKey": "NotificationEmailAddress", "ParameterValue": "email@example.com"},
-    {"ParameterKey": "AllowedSignUpEmailDomains", "ParameterValue": "example.com,example.co.jp"}
+    {"ParameterKey": "NotificationEmailAddress", "ParameterValue": "user@example.com"}
   ]'
-```
 
-### Monitoring
-```bash
-# Stack status
-aws cloudformation describe-stacks --stack-name XXXX
-
-# CodeBuild logs
+# Monitor CodeBuild logs
 aws logs tail /aws/codebuild/<PROJECT_NAME> --follow
 
-# Debug outputs
+# Check outputs
 aws cloudformation describe-stacks --stack-name <STACK_NAME> --query "Stacks[0].Outputs"
+
+# Teardown
+aws cloudformation delete-stack --stack-name <STACK_NAME>
 ```
 
-### Validation & Testing
+## Deployment Architecture
+
+Every CloudFormation template creates this pipeline automatically on stack creation:
+
+```
+User → CloudFormation Stack
+         ├── SNS Topic (email notifications)
+         ├── Lambda Custom Resource → triggers CodeBuild immediately
+         └── CodeBuild Project
+               ├── install:    clone app repo, install Node.js/CDK
+               ├── pre_build:  write app config from CF parameters
+               ├── build:      cdk bootstrap + cdk deploy
+               └── post_build: query CF outputs, send SNS notification with app URL
+```
+
+The application's own CDK stack is deployed **inside** CodeBuild — the CloudFormation template is just the orchestration shell.
+
+## CloudFormation Template Rules
+
+### Required Components
+Every template must have:
+- **SNS Topic** with email subscription and KMS encryption
+- **CodeBuild Project** with inline BuildSpec and environment variables from CF parameters
+- **Lambda Custom Resource** that calls `StartBuild` on CodeBuild (handles only `Create` events)
+- **IAM Roles** for both CodeBuild and Lambda
+
+### Parameter Conventions
+- `NotificationEmailAddress`: always required, validated with email regex pattern
+- IP restriction parameters: default to `127.0.0.1/32` (restrictive) with a warning in `ConstraintDescription` that `0.0.0.0/0` opens to all
+- Self-signup: disabled by default; when enabled, require domain restriction parameters
+- Use `AllowedValues` for enum-type parameters, `AllowedPattern` + `ConstraintDescription` for formatted strings
+
+### Extracting App URLs in post_build
+**Do this** — query CloudFormation outputs:
 ```bash
-# Validate template
-aws cloudformation validate-template --template-body file://XXXX.yaml
-
-# Delete stack
-aws cloudformation delete-stack --stack-name XXXX
+STACK_NAME=$(aws cloudformation describe-stacks \
+  --query "Stacks[?contains(StackName, 'AppPattern')].StackName" --output text)
+APP_URL=$(aws cloudformation describe-stacks --stack-name $STACK_NAME \
+  --query "Stacks[0].Outputs[?contains(OutputKey, 'FrontendUrl')].OutputValue" --output text)
 ```
+**Avoid** parsing temporary files like `.cdk-outputs.json`.
 
-## Adapting for New Applications
+## Adding a New Solution
 
-1. Analyze application architecture using MCP tools
-2. Identify required parameters (config, security, features, integrations)
-3. Copy existing template (e.g., `deployments/genu/GenUDeploymentStack.yaml`) and modify
-4. Test deployment scenarios with various parameter combinations
+1. Copy an existing template (e.g., `deployments/genu/GenUDeploymentStack.yaml`) as the closest architectural match
+2. Update `Parameters`, environment variables, and the inline BuildSpec for the new application
+3. Add a solution page under `docs/solutions/` — one `.md` (Japanese) and one `.en.md` (English) per solution
+4. Add a "Launch Stack" button entry to `docs/index.md`
+5. Add an entry to the `nav:` section in `mkdocs.yml` under `Supported Solutions:`
+6. Add the template to the `TEMPLATES` list in `tests/test_cloudformation.py`
+7. Run `pytest tests/` and `aws cloudformation validate-template` before opening a PR
 
-## Project Structure
-- Main deployment templates are in `deployments/` directory
-- Each solution has its own subdirectory (e.g., `genu/`, `dify/`)
-- Follow existing patterns for consistency
+## Documentation Structure
+
+Docs use MkDocs Material with `mkdocs-static-i18n`. Every solution has two files:
+- `docs/solutions/<name>.md` — Japanese (primary)  
+- `docs/solutions/<name>.en.md` — English
+
+Config is in `mkdocs.yml`; CI publishes via `.github/workflows/deploy-docs.yml`. The `nav:` section in `mkdocs.yml` must be updated when adding a new solution — pages omitted from `nav:` won't appear in the sidebar.
+
+## Notable Variant: Langflow
+
+`deployments/langflow/` bundles its CDK app directly in the repo under `deployments/langflow/cdk/` (TypeScript), rather than cloning an external repo in CodeBuild. The `LangflowDeploymentStack.yaml` still follows the standard CF + CodeBuild shell pattern, but the `build` phase references the local CDK code instead of a remote repository. To iterate on the CDK app directly, run `npm install` and `cdk deploy` within `deployments/langflow/cdk/`.
+
+## Notable Variant: Kiro IDE
+
+`deployments/kiro-ide/` contains two templates for different OS choices:
+- `KiroIDEDeploymentStack.yaml` — Amazon Linux 2023 (RPM/DNF)
+- `KiroIDEUbuntuDeploymentStack.yaml` — Ubuntu 24.04 LTS (APT, pre-configured GNOME)
